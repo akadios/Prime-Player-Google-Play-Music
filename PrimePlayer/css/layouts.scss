@@ -173,6 +173,9 @@
   }
   #lastfmUser {
     @include sprite(10, 0, 15);
+    &.librefm {
+      @include sprite(17, 0, 15);
+    }
   }
   #feelingLucky {
     @include sprite(15, 0, 15);

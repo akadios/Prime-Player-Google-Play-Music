@@ -9,6 +9,7 @@
 var LOCAL_SETTINGS_DEFAULTS = {
   lastfmSessionKey: null,
   lastfmSessionName: null,
+  libreFm: false,
   syncSettings: false,
   lyrics: false,
   lyricsFontSize: 11,
@@ -613,7 +614,7 @@ function unloveTrack() {
 /** open the last.fm authentication page */
 function lastfmLogin() {
   var callbackUrl = chrome.extension.getURL("options.html");
-  var url = "http://www.last.fm/api/auth?api_key=" + LASTFM_APIKEY + "&cb=" + callbackUrl;
+  var url = "http://www." + (localSettings.libreFm ? "libre" : "last") + ".fm/api/auth?api_key=" + LASTFM_APIKEY + "&cb=" + callbackUrl;
   if (optionsTabId) {
     chrome.tabs.update(optionsTabId, { url: url, active: true });
   } else {
@@ -645,7 +646,7 @@ function relogin() {
   lastfmLogout();
   chrome.notifications.create("", {
     type: "basic",
-    title: chrome.i18n.getMessage("lastfmSessionTimeout"),
+    title: chrome.i18n.getMessage("lastfmSessionTimeout", localSettings.libreFm ? "libre.fm" : "last.fm"),
     message: chrome.i18n.getMessage("lastfmRelogin"),
     iconUrl: chrome.extension.getURL("img/icon-48x48.png")
   }, function(notificationId) {
@@ -977,7 +978,7 @@ function gaEnabledChanged(val) {
     ga('set', 'checkProtocolTask', function(){});
     ga('set', 'dimension1', currentVersion);
     ga('set', 'dimension2', localSettings.lyrics.toString());
-    ga('set', 'dimension3', isScrobblingEnabled().toString());
+    ga('set', 'dimension3', isScrobblingEnabled() ? (localSettings.libreFm ? "libre.fm" : "last.fm") : "false");
     ga('set', 'dimension4', settings.toast.toString());
     ga('set', 'dimension5', settings.layout);
     ga('send', 'pageview', {
@@ -1122,6 +1123,9 @@ localSettings.watch("syncSettings", function(val) {
   });
 });
 localSettings.addListener("lastfmSessionName", calcScrobbleTime);
+localSettings.watch("libreFm", function(val) {
+  lastfm.apiUrl = val ? "https://libre.fm/2.0/" : "https://ws.audioscrobbler.com/2.0/";
+});
 localSettings.addListener("lyrics", postLyricsState);
 localSettings.addListener("lyricsFontSize", postLyricsState);
 localSettings.addListener("lyricsWidth", postLyricsState);

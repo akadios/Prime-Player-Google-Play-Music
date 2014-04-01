@@ -228,7 +228,8 @@ chrome.runtime.getBackgroundPage(function(bp) {
     if (user) {
       $("#lastfmUser")
         .attr("title", chrome.i18n.getMessage("lastfmUser") + user)
-        .attr("href", "http://last.fm/user/" + user);
+        .attr("href", "http://" + (bp.localSettings.libreFm ? "libre" : "last") + ".fm/user/" + user)
+        .toggleClass("librefm", bp.localSettings.libreFm);
     }
   }
   

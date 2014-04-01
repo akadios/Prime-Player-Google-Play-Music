@@ -10,7 +10,7 @@ function LastFM(options){
   /* Set default values for required options. */
   var apiKey    = options.apiKey    || '';
   var apiSecret = options.apiSecret || '';
-  var apiUrl    = options.apiUrl    || 'https://ws.audioscrobbler.com/2.0/';
+  this.apiUrl    = options.apiUrl    || 'https://ws.audioscrobbler.com/2.0/';
 
   this.session = {};
   this.sessionTimeoutCallback;
@@ -22,7 +22,7 @@ function LastFM(options){
     params.format = 'json';
     $.ajax({
       type: requestMethod,
-      url: apiUrl,
+      url: that.apiUrl,
       data: params,
       timeout: 10000
     }).done(function(response) {

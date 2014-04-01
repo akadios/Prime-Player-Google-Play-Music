@@ -59,7 +59,7 @@ chrome.runtime.getBackgroundPage(function(bp) {
     if (user) {
       action = bp.lastfmLogout;
       actionText = chrome.i18n.getMessage("logout");
-      userLink.text(user).attr("href", "http://last.fm/user/" + user).removeClass("disconnected");
+      userLink.text(user).attr("href", "http://" + (bp.localSettings.libreFm ? "libre" : "last") + ".fm/user/" + user).removeClass("disconnected");
     } else {
       action = bp.lastfmLogin;
       actionText = chrome.i18n.getMessage("connect");
@@ -68,6 +68,10 @@ chrome.runtime.getBackgroundPage(function(bp) {
     links.last().text(actionText).unbind().click(action);
   }
 
+  function libreFmChanged() {
+    $("#legendLastfm").text(chrome.i18n.getMessage("lastfmSettings", bp.localSettings.libreFm ? "libre.fm" : "last.fm"));
+  }
+  
   function stringUpdater(prop) {
     return function() {
       bp.settings[prop] = $(this).val();
@@ -190,7 +194,6 @@ chrome.runtime.getBackgroundPage(function(bp) {
     }
     
     $("head > title").text(chrome.i18n.getMessage("options") + " - " + chrome.i18n.getMessage("extTitle"));
-    $("#legendLastfm").text(chrome.i18n.getMessage("lastfmSettings"));
     $("#legendToasting").text(chrome.i18n.getMessage("toastingSettings"));
     $("#legendMp").text(chrome.i18n.getMessage("mpSettings"));
     $("#legendLf").text(chrome.i18n.getMessage("lfSettings"));
@@ -199,6 +202,8 @@ chrome.runtime.getBackgroundPage(function(bp) {
     var bugfeatureinfo = chrome.i18n.getMessage("bugfeatureinfo", "<a target='_blank' href='https://github.com/svenrecknagel/Prime-Player-Google-Play-Music/issues' data-network='github' data-action='issue'>GitHub</a>");
     $("#bugfeatureinfo").html(bugfeatureinfo);
     
+    //TODO request optional permission
+    initCheckbox("libreFm", bp.localSettings).click(libreFmChanged).click(bp.lastfmLogout);
     initCheckbox("scrobble").click(scrobbleChanged);
     var percentSpan = $("#scrobblePercent").parent().find("span");
     percentSpan.text(bp.settings.scrobblePercent);
@@ -287,6 +292,7 @@ chrome.runtime.getBackgroundPage(function(bp) {
     
     //we must watch this as the session could be expired
     bp.localSettings.watch("lastfmSessionName", lastfmUserChanged, "options");
+    libreFmChanged();
     //disable inputs if neccessary
     toastChanged();
     lyricsChanged();

@@ -17,6 +17,9 @@
   "myPlaylists": {
     "message": "Meine Playlists"
   },
+  "setting_libreFm": {
+    "message": "Benutze libre.fm statt last.fm"
+  },
   "setting_scrobble": {
     "message": "Scrobbeln aktivieren"
   },
@@ -30,7 +33,7 @@
     "message": "Miniplayer \u00F6ffnen"
   },
   "lastfmUser": {
-    "message": "last.fm Nutzer: "
+    "message": "Nutzer: "
   },
   "logout": {
     "message": "Abmelden"
@@ -66,10 +69,10 @@
     "message": "Diesen Titel lieben"
   },
   "lastfmError": {
-    "message": "Fehler bei der Kommunkation mit last.fm, klicken zum neu laden: "
+    "message": "Fehler bei der Kommunkation, klicken zum neu laden: "
   },
   "lastfmUnavailable": {
-    "message": "Der last.fm Webservice ist nicht erreichbar."
+    "message": "Der Webservice ist nicht erreichbar."
   },
   "setting_toastUseMpStyle": {
     "message": "Benutze Stil des Miniplayers f\u00FCr Toasts"
@@ -111,7 +114,7 @@
     "message": "Bewertungen verkn\u00FCpfen"
   },
   "setting_linkRatingsHint": {
-    "message": "Titel in last.fm lieben, wenn du Daumen hoch/f\u00FCnf Sterne in Google Music gibst und umgekehrt. Bestehende Wertungen werden nicht \u00FCberschrieben."
+    "message": "Titel lieben, wenn du Daumen hoch/f\u00FCnf Sterne in Google Music gibst und umgekehrt. Bestehende Wertungen werden nicht \u00FCberschrieben."
   },
   "setting_showLovedIndicator": {
     "message": "Zeige 'geliebt'-Status im Symbol"
@@ -174,7 +177,8 @@
     "message": "Dieser Tab ist mit Prime Player verbunden. Zum Trennen klicken."
   },
   "lastfmSettings": {
-    "message": "last.fm Einstellungen"
+    "message": "$SCROBBLER$ Einstellungen",
+    "placeholders": { "SCROBBLER": { "content": "$1" } }
   },
   "toastingSettings": {
     "message": "Toasting Einstellungen"
@@ -225,7 +229,8 @@
     "message": "Fehler beim Verbinden"
   },
   "lastfmSessionTimeout": {
-    "message": "Last.fm getrennt"
+    "message": "$SCROBBLER$ getrennt",
+    "placeholders": { "SCROBBLER": { "content": "$1" } }
   },
   "lastfmRelogin": {
     "message": "Zum Wiederverbinden hier klicken."
@@ -259,7 +264,7 @@
     "message": "Zeige Bewertung im Symbol"
   },
   "setting_hideRatings": {
-    "message": "Bewertungs-Symbole verstecken (last.fm und Daumen/Sterne)"
+    "message": "Bewertungs-Symbole verstecken (Herz und Daumen/Sterne)"
   },
   "setting_omitUnknownAlbums": {
     "message": "Verberge 'Unbekannte Alben' in der Alben-Liste des Miniplayers"

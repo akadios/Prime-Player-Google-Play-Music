@@ -266,6 +266,9 @@ a {
 #lastfmUser {
   display: none;
   @include sprite(10, 0, 13);
+  &.librefm {
+    @include sprite(17, 0, 13);
+  }
   background-color: gray;
   border-top-color: lighten(gray, 20%);
 }

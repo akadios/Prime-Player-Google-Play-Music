@@ -14,6 +14,7 @@
   },
   "permissions": [
     "*://play.google.com/music/listen*",
+    "https://libre.fm/2.0/*",
     "notifications",
     "storage"
   ],

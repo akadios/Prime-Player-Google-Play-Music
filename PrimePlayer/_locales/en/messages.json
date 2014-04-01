@@ -23,6 +23,10 @@
     "message": "My Playlists",
     "description": "text for quicklink 'my playlists'"
   },
+  "setting_libreFm": {
+    "message": "Use libre.fm instead of last.fm",
+    "description": "label for option to switch to libre.fm"
+  },
   "setting_scrobble": {
     "message": "Enable scrobbling",
     "description": "label for option to enable scrobbling"
@@ -40,7 +44,7 @@
     "description": "text for button tooltip, keyboard shortcut and toast action to open the miniplayer"
   },
   "lastfmUser": {
-    "message": "last.fm User: ",
+    "message": "User: ",
     "description": "label prefix for logged in lastfm user on options page and in lastfm link tooltip in miniplayer (user name will be appended)"
   },
   "logout": {
@@ -88,11 +92,11 @@
     "description": "tooltip for love button in miniplayer"
   },
   "lastfmError": {
-    "message": "Error on last.fm communication, click to reload: ",
+    "message": "Error on communication, click to reload: ",
     "description": "tooltip for love button in miniplayer on error (error message will be appended)"
   },
   "lastfmUnavailable": {
-    "message": "The last.fm webservice is unavailable.",
+    "message": "The webservice is unavailable.",
     "description": "tooltip for love button in miniplayer when lastfm is not available (error message will be appended)"
   },
   "setting_toastUseMpStyle": {
@@ -148,7 +152,7 @@
     "description": "label for option to link ratings"
   },
   "setting_linkRatingsHint": {
-    "message": "Love a song in last.fm if you give thumbs up/five stars in Google Music and vice versa. Does not override existing ratings.",
+    "message": "Love a song if you give thumbs up/five stars in Google Music and vice versa. Does not override existing ratings.",
     "description": "hint for option to link ratings"
   },
   "setting_showLovedIndicator": {
@@ -232,8 +236,9 @@
     "description": "tooltip for the 'P'-icon on Google Music page"
   },
   "lastfmSettings": {
-    "message": "last.fm settings",
-    "description": "title for the lastfm settings on options page"
+    "message": "$SCROBBLER$ settings",
+    "description": "title for the lastfm settings on options page",
+    "placeholders": { "SCROBBLER": { "content": "$1", "example": "last.fm" } }
   },
   "toastingSettings": {
     "message": "Toasting settings",
@@ -300,8 +305,9 @@
     "description": "tooltip for lastfm connection failure icon (error message will be appended)"
   },
   "lastfmSessionTimeout": {
-    "message": "Last.fm disconnect",
-    "description": "title for lastfm disconnected notification"
+    "message": "$SCROBBLER$ disconnect",
+    "description": "title for lastfm/librefm disconnected notification",
+    "placeholders": { "SCROBBLER": { "content": "$1", "example": "last.fm" } }
   },
   "lastfmRelogin": {
     "message": "Click here to reconnect.",
@@ -345,7 +351,7 @@
     "description": "label for option to enable rating in icon"
   },
   "setting_hideRatings": {
-    "message": "Hide rating icons (last.fm and thumbs/stars)",
+    "message": "Hide rating icons (loved heart and thumbs/stars)",
     "description": "label for option to hide ratings"
   },
   "setting_omitUnknownAlbums": {
